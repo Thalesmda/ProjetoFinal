@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    
+    
+    <h:head>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <meta name="Teste" content="Sistema Gerenciador de Igrejas(SisGerI)"></meta>
+        <title>SisGerI</title>
+    </h:head>
+    
+    
+    <h:body>
+        <ui:include src="menu.xhtml"/>
+        <b:container fluid="true" style="padding-top: 60px; padding-left: 10%; padding-right: 10%; font-size: smaller;" >
+        <b:jumbotron style="background-color: #ADD8E6">
+            <h1> Sistema Gerenciador de Igrejas (SisGerI) </h1>
+            <p> sistema desenvolvido com propósito de TCC.</p>
+            <b:form> 
+                <b:commandButton immediate ="true" value="Mais..." ajax="false" tooltip="Leia mais sobre esta iniciativa..." look="primary" action="sobre?faces-redirect=true" />
+            </b:form>
+            
+        </b:jumbotron>
+        </b:container>
+    </h:body>   
+</html>
+
