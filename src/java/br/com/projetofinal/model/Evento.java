@@ -21,10 +21,10 @@ public class Evento implements Serializable{
     private long idEvento;
     private String nome;
     private String descricao;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal (value=TemporalType.DATE)
     private Date data;
     @OneToMany (fetch = FetchType.EAGER, orphanRemoval = true, mappedBy = "evento")
-    private List<Pessoa> inscricoes;
+    private List<Inscricao> inscricoes;
 
     public Evento(){
         idEvento=-1;
@@ -69,11 +69,19 @@ public class Evento implements Serializable{
         
     }
 
-    public List<Pessoa> getInscricoes() {
+    public List<Inscricao> getInscricoes() {
         return inscricoes;
     }
 
-    public void setInscricoes(List<Pessoa> inscricoes) {
+    public void setInscricoes(List<Inscricao> inscricoes) {
         this.inscricoes = inscricoes;
+    }
+    
+    public void adicionarInscricao(Inscricao inscricao){
+        inscricoes.add(inscricao);
+    }
+    
+    public void removerInscricao(Inscricao inscricao){
+        inscricoes.remove(inscricao);
     }
 }

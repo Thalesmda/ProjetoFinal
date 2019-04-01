@@ -46,6 +46,7 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:derby://localhost:1527/projetofinal</property>
     <property name="hibernate.connection.username">projetofinal</property>
     <property name="hibernate.connection.password">123</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="br.com.projetofinal.model.Evento"/>
     <mapping class="br.com.projetofinal.model.Igreja"/>
     <mapping class="br.com.projetofinal.model.Pessoa"/>

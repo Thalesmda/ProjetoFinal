@@ -26,6 +26,7 @@ public class Inscricao implements Serializable{
     @OneToOne
     private Evento evento;
 
+    @OneToOne
     private Pessoa pessoa;
     
     public Inscricao(){
@@ -54,5 +55,10 @@ public class Inscricao implements Serializable{
 
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
+    }
+    
+    @Override
+    public String toString(){
+        return pessoa + " inscrita em " + evento ;
     }
 }

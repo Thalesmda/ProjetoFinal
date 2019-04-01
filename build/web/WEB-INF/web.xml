@@ -9,6 +9,14 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <filter>
+        <filter-name>Filtro de Login</filter-name>
+        <filter-class>br.com.projetofinal.util.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Filtro de Login</filter-name>
+        <url-pattern>/faces/restricted/*</url-pattern>
+    </filter-mapping>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>

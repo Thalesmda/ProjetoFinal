@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <meta name="Pablo Rangel" content="Sistema de Gerência de Vendas (SisGerV)"></meta>
+        <title>SisGerV</title>
+    </h:head>
+
+    <h:body>
+        <ui:include src="/restricted/menu_restrito_admin.xhtml"/>
+        <b:container fluid="true" style="padding-top: 60px; padding-left: 10%; padding-right: 10%; font-size: smaller;" >
+            <b:form>
+                <b:panel title="Lista de Membros" look="primary"  showCollapseLink="false">
+                    <b:dataTable id="tabelaMembros" value="#{controladorGerenciarPessoa.listar()}" 
+                                 var="membro"
+                                 page-length="5"
+                                 page-length-menu="5,10,20"
+                                 customLangUrl="//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json"
+                                 responsive="true"
+                                 select="true">
+                        <b:dataTableColumn label="Nome Completo" value="#{membro.nome}" order = "asc"/>
+                        <b:dataTableColumn label="CPF" value="#{membro.cpf}"/>
+                        <b:dataTableColumn label="Gênero" value="#{membro.genero}"/>
+                        <b:dataTableColumn label="Data de Nascimento" value="#{membro.dataNascimento}"/>
+                        <b:dataTableColumn label="Administrador?" value="#{membro.admin}"/>
+                        <b:dataTableColumn label="E-mail" value="#{membro.email}" />
+                        <b:dataTableColumn label="Gerar Senha"> 
+                            <b:commandButton ajax="true" tooltip="Gere uma nova senha para este usuário" look="warning" action="/restricted/gerar_senha?faces-redirect=true" actionListener="#{controladorGerenciarPessoa.setModelo(membro)}">
+                                <b:iconAwesome name="lock"></b:iconAwesome>
+                            </b:commandButton>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Alterar"> 
+                            <b:commandButton ajax="true" tooltip="Altere este registro" look="warning" action="/restricted/inserir_alterar_pessoa?faces-redirect=true" actionListener="#{controladorGerenciarPessoa.setModelo(membro)}">
+                                <b:iconAwesome name="edit"></b:iconAwesome>
+                            </b:commandButton>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Excluir">
+                            <b:commandButton update="@form" ajax="true" tooltip="Exclua este registro" look="danger" process="@this" immediate="true" action="#{controladorGerenciarPessoa.excluir()}" actionListener="#{controladorGerenciarPessoa.setModelo(membro)}">
+                                <b:iconAwesome name="trash"></b:iconAwesome>
+                            </b:commandButton>
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                    <f:facet name="footer">
+                        <p style="text-align: right"> 
+                            <b:commandButton value="Adicionar novo registro... " ajax="true" tooltip="Adicione um novo registro" look="success" action="/restricted/inserir_alterar_pessoa?faces-redirect=true" actionListener="#{controladorGerenciarPessoa.setModelo(null)}">
+                                <b:iconAwesome name="plus"></b:iconAwesome>
+                            </b:commandButton>
+                        </p>
+                    </f:facet>
+                </b:panel>
+            </b:form>
+        </b:container>
+    </h:body>
+</html>
+

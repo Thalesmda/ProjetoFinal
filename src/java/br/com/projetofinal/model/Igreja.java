@@ -6,6 +6,7 @@
 package br.com.projetofinal.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -18,11 +19,18 @@ public class Igreja implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idIgreja;
+    
     private String nome;
     private String descricao;    
+   
+    @OneToMany(mappedBy="igreja", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<Pessoa> membros;
+    
     public Igreja(){
         idIgreja=-1;
+        membros= new ArrayList();
     }
+    
     public long getIdIgreja() {
         return idIgreja;
     }
@@ -46,10 +54,25 @@ public class Igreja implements Serializable{
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
      
     @Override
     public String toString(){
         return nome;
+    }
+
+    public List<Pessoa> getMembros() {
+        return membros;
+    }
+
+    public void setMembros(List<Pessoa> membros) {
+        this.membros = membros;
+    }
+
+    public void adicionarMembro(Pessoa membro){
+        membros.add(membro);
+    }
+    
+    public void removerMembro(Pessoa membro){
+        membros.remove(membro);
     }
 }

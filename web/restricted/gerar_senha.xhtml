@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <meta name="Pablo Rangel" content="Sistema de Gerência de Vendas (SisGerV)"></meta>
+        <title>SisGerV</title>
+    </h:head>
+
+    <h:body>
+        <ui:include src="/restricted/menu_restrito_admin.xhtml"/>
+        <b:container fluid="true" style="padding-top: 60px; padding-left: 35%; padding-right: 35%" >
+            <h:form id="geracao_senha">
+                <b:panel title="Gere uma nova senha" look="primary">
+                    <b:row>
+                        <b:column medium-screen="12">
+                            <p style="font-size: 14px"> Você está prestes a gerar uma nova senha para <strong> #{controladorGerenciarPessoa.modelo.nome}. </strong> Deseja realmente realizar essa operação?</p> 
+                        </b:column>
+                        
+                    </b:row>
+                    <b:row>
+                        <b:column span="12">
+                            <p>
+                                <b:commandButton value="Gerar!" actionListener="#{controladorGerenciarPessoa.gerarSenha()}" update="@form" look="danger" style="width:100%" />
+                            </p>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="12">
+                            <p>
+                                <b:commandButton immediate="true" value="Fechar" iconAwesome="close" ajax="false" tooltip="Fecha este formulário e volta para a tela anterior." look="primary" action="/restricted/gerenciar_pessoa?faces-redirect=true" style="width:100%" />
+                            </p>
+                        </b:column>
+                    </b:row>
+                </b:panel>
+                <b:well id="mensagem" styleClass="message-well" style="margin-top:10px">
+                    <b:message for="geracao_senha"/>
+                    <p>#{controladorGerenciarPessoa.getMensagem()}</p>
+                </b:well>
+            </h:form>
+        </b:container>
+
+    </h:body>
+</html>
+
+
+

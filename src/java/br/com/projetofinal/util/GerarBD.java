@@ -27,8 +27,11 @@ import br.com.projetofinal.model.Pessoa;
 public class GerarBD {
     public static void main(String[] args) {
         Pessoa p = new Pessoa();
-        p.setNome("Pablo");
+        p.setNome("Administrador");
         p.setCpf("11111");
+        p.setAdmin(true);
+        p.setEmail("admin");
+        p.setSenha("123");
         DAO<Pessoa> dao = new DAO(p);
         dao.inserir();
     }
