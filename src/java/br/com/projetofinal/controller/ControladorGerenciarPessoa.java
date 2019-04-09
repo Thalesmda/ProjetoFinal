@@ -47,8 +47,10 @@ public class ControladorGerenciarPessoa extends ControladorGerenciar<Pessoa>{
     }
    
     public void gerarSenha(){
-        getModelo().gerarSenha();
-        setMensagem("Senha gerada com sucesso: " + getModelo().getSenha());
+        String senha = getModelo().gerarSenha();
+        setMensagem("Senha gerada com sucesso: " + senha);
+        getModelo().setSenha(senha);
+        alterar();
     }
 
 }

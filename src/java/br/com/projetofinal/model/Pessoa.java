@@ -120,7 +120,7 @@ public class Pessoa implements Serializable {
     }
 
     public void setSenha(String senha) {
-        this.senha = senha;
+        this.senha = converterStringParaMD5(senha);
     }
 
     @Override
@@ -136,7 +136,7 @@ public class Pessoa implements Serializable {
         this.admin = admin;
     }
 
-    public void gerarSenha() {
+    public String gerarSenha() {
         String senha = "";
         for (int i = 0; i < 8; i++) {
             Random r = new Random();
@@ -155,7 +155,7 @@ public class Pessoa implements Serializable {
                 senha = senha + numero;
             }
         }
-        setSenha(senha);
+        return senha;
 
     }
 
